@@ -25,7 +25,7 @@ body {
 
 img {
   max-width: 100%;
-  height: auto;
+  height: 400px;
   display: block;
 }
 
@@ -40,15 +40,16 @@ a:hover {
   color: var(--accent-color);
 }
 
+/* Container */
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
+/* Header */
 .header {
-  padding: 30px 0 0;
-  background: none;
+  margin-bottom: 120px;
 }
 
 .header-wrapper {
@@ -58,8 +59,8 @@ a:hover {
 }
 
 .header-logo {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 
@@ -70,50 +71,93 @@ a:hover {
 
 .header-link {
   font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0;
   color: var(--text-color);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .header-link:hover {
   color: var(--accent-color);
 }
 
-.footer {
-  padding: 50px 244px 50px 244px;
-  background-color: #1d1d1f;
+/* Sections spacing */
+main > section {
+  margin-bottom: 120px;
+}
+
+/* Intro Section */
+.intro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 70px;
+  margin-top: 0;
+  margin-bottom: 120px;
+}
+
+.intro-text {
+  flex: 1;
 }
 
 .intro-title {
   font-size: 60px;
-  line-height: 1.1;
   font-weight: 700;
+  line-height: 1.1;
+  margin-top: 130px;
+  margin-bottom: 20px;
 }
 
 .intro-subtitle {
-  font-size: 38px;
-  line-height: 1.2;
-  font-weight: 400;
+  font-size: 40px;
   color: var(--accent-color);
-  margin-bottom: 20px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 40px;
 }
 
 .intro-photo {
-  width: 400px;
-  height: 400px;
   border-radius: 50%;
-  object-fit: cover;
-  margin-top: 20px;
+  flex-shrink: 0;
 }
 
-.skills-title,
-.about-title,
-.interests-title,
-.contacts-title {
+/* About Section */
+.about-title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 40px;
+  text-align: left;
+  letter-spacing: -0.2px;
+}
+
+.text-wrapper {
+  max-width: 800px;
+  line-height: 1.5;
+}
+
+.text-wrapper p {
+  margin-bottom: 15px;
+}
+
+.text-wrapper p:last-child {
+  margin-bottom: 0;
+}
+
+/* Skills Section */
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 36px;
+}
+
+.skills-title {
   font-size: 30px;
   line-height: 1.2;
   font-weight: 700;
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin: 0;
 }
 
 .skills-sort {
@@ -125,10 +169,14 @@ a:hover {
   color: var(--text-color);
 }
 
+.skills-label {
+  font-size: 20px;
+}
+
 .skills-button {
   background-color: transparent;
   padding: 8px 14px;
-  border: 2px solid var(--accent-color);
+  border: 1px solid var(--accent-color);
   font-size: 18px;
   border-radius: 6px;
   cursor: pointer;
@@ -142,14 +190,14 @@ a:hover {
 }
 
 .skill-list {
-  margin: 0;
+  margin: 30;
   padding: 0;
   line-height: 1;
 }
 
 .skill-list dt {
-  margin-bottom: 6px;
-  padding: 5px 0 5px 38px;
+  margin-bottom: 8px;
+  padding: 6px 0 5px 38px;
   background-position: left center;
   background-repeat: no-repeat;
   background-size: 30px;
@@ -160,17 +208,17 @@ a:hover {
   padding: 2px;
   font-size: 0;
   border: 1px solid var(--text-color);
-  border-radius: 16px;
-}
-
-.skill-item {
-  text-transform: lowercase;
+  border-radius: 24px;
 }
 
 .skill-level div {
   height: 14px;
   background-color: var(--accent-color);
-  border-radius: 8px;
+  border-radius: 24px;
+}
+
+.skill-item {
+  text-transform: lowercase;
 }
 
 .skill-item-html {
@@ -202,6 +250,55 @@ a:hover {
   transition: color 0.2s ease;
 }
 
+/* Interests Section */
+.interests-title {
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0 0 40px;
+}
+
+.interests .text-wrapper p {
+  margin-bottom: 15px;
+}
+
+/* Contacts Section */
+.contacts-title {
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0 0 40px;
+}
+
+.contacts-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts-list {
+  display: flex;
+  gap: 40px; 
+  list-style: none;
+  margin: 0 0 30px;
+  padding: 0;
+}
+
+.contacts-item {
+  margin: 0;
+}
+
+.contacts-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 2px 12px 40px; 
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 28px;
+  color: var(--text-color);
+  transition: color 0.2s ease;
+}
+
 .contacts-link-phone {
   background-image: url("../img/ContactsIcon-tele.svg");
 }
@@ -214,22 +311,9 @@ a:hover {
   color: var(--accent-color);
 }
 
-.contacts-item {
-  list-style: none;
-  margin-bottom: 10px;
-}
-
-.contacts-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
 .contacts-socials {
-  margin-top: 20px;
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  gap: 22px;
 }
 
 .contacts-social {
@@ -269,8 +353,15 @@ a:hover {
   white-space: nowrap;
 }
 
+/* Footer */
+.footer {
+  width: 100%;
+  padding: 55px 0;
+  background-color: #1d1d1f;
+}
+
 .footer-text {
-  font-size: 14px;
-  color: var(--bg-color);
-  margin-top: 20px;
+  font-size: 20px;
+  color: #777;
+  margin: 0;
 }
