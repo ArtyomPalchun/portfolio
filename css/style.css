@@ -55,7 +55,7 @@ a:hover {
 .header-wrapper {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 58px;
 }
 
 .header-logo {
@@ -163,8 +163,7 @@ main > section {
 .skills-sort {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 25px;
+  gap: 20px;
   font-weight: 400;
   color: var(--text-color);
 }
@@ -204,7 +203,7 @@ main > section {
 }
 
 .skill-level {
-  margin: 4px 0 20px;
+  margin: 4px 0 14px;
   padding: 2px;
   font-size: 0;
   border: 1px solid var(--text-color);
