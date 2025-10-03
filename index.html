@@ -1,57 +1,63 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Проект создания собственного сайта">
   <title>Сайт-портфолио</title>
-  <link rel="icon" href="img/main-logo.svg" type="image/x-icon">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/main-logo.svg" type="image/x-icon" >
+  <link rel="stylesheet" href="css/normalize.css" >
+  <link rel="stylesheet" href="css/style.css" >
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
     rel="stylesheet">
 </head>
 
 <body>
   <div class="container">
-    <header class="header">
-      <div class="header-wrapper">
-        <img src="img/main-logo.svg" alt="Логотип" class="header-logo">
-        <nav class="header-nav">
-          <a href="#about" class="header-link">Обо мне</a>
-          <a href="#skills" class="header-link">Навыки</a>
-          <a href="#interests" class="header-link">Интересы</a>
-          <a href="#contacts" class="header-link">Контакты</a>
-        </nav>
+    <header class="main-header">
+      <div class="main-header-wrap">
+        <img src="img/main-logo.svg" alt="Логотип" width="60" height="60">
+        <button class="nav-btn nav-btn-close">
+          <span class="visually-hidden">Закрыть меню</span>
+        </button>
       </div>
+      <nav class="main-nav">
+        <a href="#about">Обо мне</a>
+        <a href="#skills">Навыки</a>
+        <a href="#interests">Интересы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
     </header>
-    
-      <main>
-      <section class="intro" id="intro">
-        <div class="intro-text">
-          <h1 class="intro-title">Пальчун Артём</h1>
-          <p class="intro-subtitle">QA - инженер</p>
+
+    <main>
+      <section class="section-intro">
+        <div>
+          <h1>Пальчун Артём</h1>
+          <p class="subtitle">QA - инженер</p>
         </div>
-        <img src="img/user-photo.jpg" alt="Фото" class="intro-photo" width="400" height="400">
+        <img src="img/user-photo.jpg" alt="Фото" width="400" height="400">
       </section>
-    
-      <section class="about" id="about">
-        <h2 class="about-title">Пара слов обо мне</h2>
+
+      <section id="about" class="section-about">
+        <h2>Пара слов обо мне</h2>
         <div class="text-wrapper">
           <p>Привет 👋</p>
-          <p>В данный момент я учусь в магистратуре МФ МГТУ им. Н. Э. Баумана по направлению «Информатика и вычислительная техника».</p>
-          <p>В прошлом году я защитил диплом бакалавра на тему «Разработка web-приложения для обмена сообщениями и файлами различного формата». Работа была высоко оценена комиссией.</p>
+          <p>В данный момент я учусь в магистратуре МФ МГТУ им. Н. Э. Баумана по направлению «Информатика и
+            вычислительная техника».</p>
+          <p>В прошлом году я защитил диплом бакалавра на тему «Разработка web-приложения для обмена сообщениями и
+            файлами различного формата». Работа была высоко оценена комиссией.</p>
           <p>На данный момент я работаю QA - инженером в НПП "МЕРА".</p>
         </div>
       </section>
-    
-      <section class="skills" id="skills">
-        <div class="skills-header">
-          <h2 class="skills-title">Мои навыки</h2>
-          <div class="skills-sort">
-            <span class="skills-label">Сортировать</span>
-            <button class="skills-button">по названию</button>
-            <button class="skills-button">по уровню</button>
+
+      <section id="skills" class="section-skills">
+        <div class="skills-head">
+          <h2>Мои навыки</h2>
+          <div>
+            <p>Сортировать</p>
+            <button>по названию</button>
+            <button>по уровню</button>
           </div>
         </div>
         <dl class="skill-list">
@@ -76,44 +82,51 @@
           </dd>
         </dl>
       </section>
-    
-      <section class="interests" id="interests">
-        <h2 class="interests-title">Мои интересы</h2>
+
+      <section id="interests" class="section-interests">
+        <h2>Мои интересы</h2>
         <div class="text-wrapper">
           <p>Наибольший интерес для меня в данный момент представляет программирование и изучение QA инструментов.</p>
           <p>Кроме учёбы и работы я также люблю играть в пинг-понг, играть футбол и смотреть фильмы.</p>
         </div>
       </section>
 
-      <section class="contacts" id="contacts">
-  <h2 class="contacts-title">Мои контакты</h2>
-  <ul class="contacts-list">
-    <li class="contacts-item">
-      <a href="tel:+79175485995" class="contacts-link contacts-link-phone">+7 917 548-59-95</a>
-    </li>
-    <li class="contacts-item">
-      <a href="mailto:gfkmxey@yandex.ru" 
-        class="contacts-link contacts-link-mail">gfkmxey@yandex.ru</a>
-    </li>
-  </ul>
-<div class="contacts-socials">
-  <a href=" https://github.com/ArtyomPalchun " class="contacts-social contacts-social-github" target="_blank"
-    aria-label="GitHub"></a>
-  <a href="https://vk.com/gawazz " class="contacts-social contacts-social-vk" target="_blank"
-    aria-label="VK"></a>
-  <a href="https://t.me/HedgehoGG95 " class="contacts-social contacts-social-telegram" target="_blank"
-    aria-label="Telegram"></a>
-  </div>
-</section>
+      <section id="contacts" class="section-contacts">
+        <h2>Мои контакты</h2>
+        <ul class="contact">
+          <li>
+            <a class="contact-link contact-link-phone" href="tel:+79175485995">+7 917 548-59-95 </a>
+          </li>
+          <li>
+            <a class="contact-link contact-link-email" href="mailto:gfkmxey@yandex.ru">gfkmxey@yandex.ru</a>
+          </li>
+        </ul>
+        <ul class="social">
+          <li>
+            <a class="social-link social-link-github" href="https://github.com/ArtyomPalchun" target="_blank">
+              <span class="visually-hidden">GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-link social-link-vk" href="https://vk.com/gawazz" target="_blank">
+              <span class="visually-hidden">VK</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-link social-link-telegram" href="https://t.me/HedgehoGG95" target="_blank">
+              <span class="visually-hidden">Telegram</span>
+            </a>
+          </li>
+        </ul>
+      </section>
     </main>
   </div>
-    
-  <footer class="footer">
+
+  <footer class="main-footer">
     <div class="container">
-      <p class="footer-text">© 2025 Пальчун Артём</p>
+      <p>© 2025 Пальчун Артём</p>
     </div>
   </footer>
 </body>
 
 </html>
-
