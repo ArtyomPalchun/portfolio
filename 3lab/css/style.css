@@ -234,24 +234,6 @@ li {
   text-transform: lowercase;
 }
 
-
-.skill-item-html {
-  background-image: url("../img/Icon-html.svg");
-}
-
-
-.skill-item-css {
-  background-image: url("../img/Icon-css.svg");
-}
-
-.skill-item-python {
-  background-image: url("../img/Icon-python.svg");
-}
-
-.skill-item-cpp {
-  background-image: url("../img/Icon-c++.svg");
-}
-
 .main-header {
   display: flex;
   padding-top: 60px;
