@@ -420,6 +420,11 @@ section,
     border: 0px;
   }
 
+    .nav-btn:hover,
+    .nav-btn:active {
+        background-color: transparent;
+    }
+
   .nav-btn-close {
     background-image: url("../img/close.svg");
   }
