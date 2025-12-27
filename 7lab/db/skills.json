@@ -1,0 +1,6 @@
+[
+    { "title": "html", "level": 5, "icon": "Icon-html.svg" },
+    { "title": "css", "level": 55, "icon": "Icon-css.svg" },
+    { "title": "python", "level": 100, "icon": "Icon-python.svg" },
+    { "title": "c++", "level": 85, "icon": "Icon-c++.svg" }
+  ]
