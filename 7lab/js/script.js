@@ -147,7 +147,7 @@ const theme = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  skills.init('.skill-list', '.skills-sort', 'db/skills1.json');
+  skills.init('.skill-list', '.skills-sort', 'db/skills.json');
   menu.init('.nav-btn', '.main-nav');
   theme.init('#switch');
 });
