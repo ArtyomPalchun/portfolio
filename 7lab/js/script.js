@@ -1,13 +1,36 @@
+function getComparer(prop) {
+  return (a, b) => {
+    if (a[prop] < b[prop]) return -1;
+    if (a[prop] > b[prop]) return 1;
+    return 0;
+  };
+}
 const skills = {
   data: [],
+  listEL:null,
+  sortBtnsEl: null,
 
   sortConfig: {
     type: null,   
     order: 'asc'  
   },
 
-  generateList(parentElement) {
-    parentElement.innerHTML = '';
+  init(listSelector, sortBtnsSelector, dataPath) {
+    this.listEl = document.querySelector(listSelector);
+    this.sortBtnsEl = document.querySelector(sortBtnsSelector);
+
+    this.sortBtnsEl.addEventListener('click', (event) => {
+      const btn = event.target.closest('button');
+      if (btn && btn.dataset.type) {
+        this.sortList(btn.dataset.type);
+      }
+    });
+    
+    this.getData(dataPath);
+  },
+
+  render() {
+    this.listEl.innerHTML = '';
     this.data.forEach(skill => {
       const dt = document.createElement('dt');
       dt.classList.add('skill-item');
@@ -22,16 +45,8 @@ const skills = {
       div.style.width = `${skill.level}%`;
 
       dd.append(div);
-      parentElement.append(dt, dd);
+      this.listEl.append(dt, dd);
     });
-  },
-
-  getComparer(prop) {
-    return (a, b) => {
-      if (a[prop] < b[prop]) return -1;
-      if (a[prop] > b[prop]) return 1;
-      return 0;
-    };
   },
 
   sortList(type) {
@@ -43,12 +58,12 @@ const skills = {
       sortConfig.type = type;
       sortConfig.order = 'asc';
     }
-    this.data.sort(this.getComparer(type));
+    this.data.sort(getComparer(type));
     if (sortConfig.order === 'desc') {
       this.data.reverse(); 
     }
 
-    this.generateList(skillList);
+    this.render();
   },
 
   getData(path) {
@@ -59,82 +74,80 @@ const skills = {
       })
       .then(data => {
         this.data = data;            
-        this.generateList(skillList); 
+        this.render(); 
       })
       .catch(() => {
-        document.querySelector('.section-skills').style.display = 'none';
+        const section = this.listEl.closest('.section-skills');
+        if (section) section.style.display = 'none';
       });
   }
 };
 
-const skillList = document.querySelector('.skill-list');
-const sortBtnsBlock = document.querySelector('.skills-sort');
-const navBtn = document.querySelector('.nav-btn');
-const navMenu = document.querySelector('.main-nav');
-
-
-
-sortBtnsBlock.addEventListener('click', function(event) {
-  const btn = event.target.closest('button');
-  if (btn && btn.dataset.type) {
-    skills.sortList(btn.dataset.type);
-  }
-});
-
-function getNavBtnLabel() {
-  return navBtn.querySelector('.visually-hidden');
-}
-
 const menu = {
+  btn: null,
+  nav: null,
+
+  init(btnSelector, navSelector) {
+    this.btn = document.querySelector(btnSelector);
+    this.nav = document.querySelector(navSelector);
+
+    this.btn.addEventListener('click', () => {
+      if (this.btn.classList.contains('nav-btn-open')) {
+        this.open();
+      } else {
+        this.close();
+      }
+    });
+    this.close();
+  },
+
+  getLabel() {
+    return this.btn.querySelector('.nav-btn-text');
+  },
+
   open() {
-    navMenu.classList.remove('main-nav_closed');
-    navBtn.classList.remove('nav-btn-open');
-    navBtn.classList.add('nav-btn-close');
-    getNavBtnLabel().textContent = 'Закрыть меню';
-    navBtn.setAttribute('aria-expanded', 'true');
+    this.nav.classList.remove('main-nav_closed');
+    this.btn.classList.remove('nav-btn-open');
+    this.btn.classList.add('nav-btn-close');
+    this.getLabel().textContent = 'Закрыть меню';
+    this.btn.setAttribute('aria-expanded', 'true');
   },
 
   close() {
-    navMenu.classList.add('main-nav_closed');
-    navBtn.classList.remove('nav-btn-close');
-    navBtn.classList.add('nav-btn-open');
-    getNavBtnLabel().textContent = 'Открыть меню';
-    navBtn.setAttribute('aria-expanded', 'false');
+    this.nav.classList.add('main-nav_closed');
+    this.btn.classList.remove('nav-btn-close');
+    this.btn.classList.add('nav-btn-open');
+    this.getLabel().textContent = 'Открыть меню';
+    this.btn.setAttribute('aria-expanded', 'false');
   }
 };
 
-menu.close();
+const theme = {
+  switchEl: null,
 
-navBtn.addEventListener('click', () => {
-  if (navBtn.classList.contains('nav-btn-open')) {
-    menu.open();
-  } else {
-    menu.close();
+  init(switchSelector) {
+    this.switchEl = document.querySelector(switchSelector);
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-theme');
+      this.switchEl.checked = true;
+    }
+
+    this.switchEl.addEventListener('change', () => {
+      if (this.switchEl.checked) {
+        document.body.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.classList.remove('dark-theme');
+        localStorage.setItem('theme', 'light');
+      }
+    });
   }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  skills.init('.skill-list', '.skills-sort', 'db/skills1.json');
+  menu.init('.nav-btn', '.main-nav');
+  theme.init('#switch');
 });
-
-const themeSwitch = document.querySelector('#switch');
-
-themeSwitch.checked = document.body.classList.contains('dark-theme');
-
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-  document.body.classList.add('dark-theme');
-  themeSwitch.checked = true;
-} else {
-  document.body.classList.remove('dark-theme');
-  themeSwitch.checked = false;
-}
-
-
-themeSwitch.addEventListener('change', function() {
-  if (this.checked) {
-    document.body.classList.add('dark-theme');
-    localStorage.setItem('theme', 'dark'); 
-  } else {
-    document.body.classList.remove('dark-theme');
-    localStorage.setItem('theme', 'light');
-  }
-});
-
-skills.getData('db/skills.json'); 
